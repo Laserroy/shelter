@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUser;
+use App\Listeners\LogSuccessfullLogin;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\JsonResponse;
@@ -34,6 +36,7 @@ class RegisterController extends Controller
         $this->guard()->login($user);
 
         if ($response = $this->registered($request, $user)) {
+            event(new Login($this->guard(), $user, false));
             return $response;
         }
 

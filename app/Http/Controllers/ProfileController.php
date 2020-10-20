@@ -18,7 +18,9 @@ class ProfileController extends Controller
     public function update(UpdateUser $request)
     {
         $user = Auth::user();
-        dd($request);
+        $input = $request->all();
+        $user->fill($input)->save();
 
+        return redirect()->back()->with('success', 'Profile updated');
     }
 }

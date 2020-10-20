@@ -48,4 +48,9 @@ class User extends Authenticatable
     protected $attributes = [
         'is_infected' => false,
     ];
+
+    public function getFullName()
+    {
+        return "$this->name $this->surname";
+    }
 }
