@@ -64,7 +64,9 @@
                 <td>{{ $user->location }}</td>
                 <td>{{ $user->last_login }}</td>
                 <td>{{ $user->is_infected ? 'infected' : 'healthy' }}</td>
-                <td>{{ 'stub for buttons' }}</td>
+                <td>
+                    @include('partials._infected-button-action', compact('user'))
+                </td>
             </tr>
             @endforeach
         </tbody>

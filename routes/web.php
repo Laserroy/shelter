@@ -25,4 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/profile/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
+Route::patch('/users/{user}/infected', [App\Http\Controllers\UserInfectionMarkController::class, 'update'])
+    ->name('user.infected');
+
 Route::resource('users', App\Http\Controllers\UserController::class)->only(['index', 'show']);

@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function getFullName()
     {
-        return "$this->name $this->surname";
+        return implode(' ', [$this->name, $this->surname]);
     }
 
     public function scopeFilter(Builder $builder, QueryFilter $filters)
