@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div>
 <form class="form-row" method="GET" action="{{ route('users.index') }}">
     @csrf
         <div class="form-group col">
@@ -68,5 +69,8 @@
         @endforeach
     </tbody>
     </table>
-{{ $users->links() }}
+    <nav class="pagination justify-content-center">
+        {{ $users->links() }}
+    </nav>
+</div>
 @endsection

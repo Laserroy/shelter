@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Filters\UserFilters;
+use App\Http\Filters\UserFilters;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -18,7 +18,7 @@ class UserController extends Controller
         $request->flash();
         $users = User::filter($filters)
             ->orderBy('last_login', 'desc')
-            ->paginate(15);
+            ->paginate(10);
 
         return view('user.index', compact('users'));
     }

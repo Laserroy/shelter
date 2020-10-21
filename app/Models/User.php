@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Filters\QueryFilter;
+use App\http\Filters\QueryFilter;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

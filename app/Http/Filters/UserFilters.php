@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filters;
+namespace App\Http\Filters;
 
 class UserFilters extends QueryFilter
 {
@@ -24,6 +24,5 @@ class UserFilters extends QueryFilter
         if (!empty($condition)) {
             return $this->builder->where('is_infected', $condition);
         }
-
     }
 }
