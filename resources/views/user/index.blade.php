@@ -8,7 +8,7 @@
               <div class="input-group-prepend">
                 <div class="input-group-text">Name</div>
               </div>
-              <input type="text" name="name" class="form-control" id="inlineFormInputGroup">
+              <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="inlineFormInputGroup">
             </div>
           </div>
         <div class="form-group col">
@@ -16,7 +16,7 @@
             <div class="input-group-prepend">
               <div class="input-group-text">Surname</div>
             </div>
-            <input type="text" name="surname" class="form-control" id="inlineFormInputGroup">
+            <input type="text" name="surname" value="{{ old('surname') }}" class="form-control" id="inlineFormInputGroup">
           </div>
         </div>
         <div class="form-group col">
@@ -24,7 +24,7 @@
               <div class="input-group-prepend">
                 <div class="input-group-text">Location</div>
               </div>
-              <input type="text" name="location" class="form-control" id="inlineFormInputGroup">
+              <input type="text" name="location" value="{{ old('location') }}" class="form-control" id="inlineFormInputGroup">
             </div>
         </div>
         <div class="form-group col">
@@ -33,9 +33,9 @@
                 <div class="input-group-text">State</div>
               </div>
               <select class="custom-select" name="is_infected" id="inlineFormInputGroup">
-                <option selected></option>
-                <option value="false">Healthy</option>
-                <option value="true">Infected</option>
+                <option value="" {{ old('is_infected') === "" ? 'selected' : '' }}>All</option>
+                <option value="false" {{ old('is_infected') === "false" ? 'selected' : '' }}>Healthy</option>
+                <option value="true" {{ old('is_infected') === "true" ? 'selected' : '' }}>Infected</option>
               </select>
             </div>
         </div>
