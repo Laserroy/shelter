@@ -29,3 +29,11 @@ Route::patch('/users/{user}/infected', [App\Http\Controllers\UserInfectionMarkCo
     ->name('user.infected');
 
 Route::resource('users', App\Http\Controllers\UserController::class)->only(['index', 'show']);
+
+Route::group(['prefix' => 'messages'], function () {
+    Route::get('/', [App\Http\Controllers\MessagesController::class, 'index'])->name('messages.index');
+    Route::get('create/{recipient}', [App\Http\Controllers\MessagesController::class, 'create'])->name('messages.create');
+    Route::post('/', [App\Http\Controllers\MessagesController::class, 'store'])->name('messages.store');
+    Route::get('{id}', [App\Http\Controllers\MessagesController::class, 'show'])->name('messages.show');
+    Route::put('{id}', [App\Http\Controllers\MessagesController::class, 'update'])->name('messages.update');
+});

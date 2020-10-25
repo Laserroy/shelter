@@ -48,12 +48,12 @@
     <table class="table table-bordered text-center">
         <thead>
             <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Surname</th>
-                <th scope="col">Location</th>
-                <th scope="col">Last activity</th>
-                <th scope="col">State</th>
-                <th scope="col">Actions</th>
+                <th scope="col">{{ __('Name') }}</th>
+                <th scope="col">{{ __('Surname') }}</th>
+                <th scope="col">{{ __('Location') }}</th>
+                <th scope="col">{{ __('Last activity') }}</th>
+                <th scope="col">{{ __('State') }}</th>
+                <th scope="col">{{ __('Actions') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -66,9 +66,15 @@
                 <td>
                     @include('partials._infected-button-action', compact('user'))
                 </td>
-                <td>
-                    <div class="btn-group" role="group">
+                <td class="text-left">
+                    <div class="btn-group">
                         @include('partials._user-show-button', compact('user'))
+                        @if(!$user->is_infected)
+                            <a href="{{ route('messages.create', ['recipient' => $user]) }}"
+                               class="btn btn-success ml-1">
+                               {{ __('New thread') }}
+                            </a>
+                        @endif
                     </div>
                 </td>
             </tr>

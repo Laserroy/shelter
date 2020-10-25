@@ -26,6 +26,9 @@
                 <a class="navbar-brand" href="{{ route('users.index') }}">
                     {{ __('Users') }}
                 </a>
+                <a class="navbar-brand" href="{{ route('messages.index') }}">
+                    {{ __('Messages') }}
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
