@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use App\http\Filters\QueryFilter;
+use Cmgmyr\Messenger\Traits\Messagable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, Messagable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,8 +21,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'surname',
         'email',
         'password',
+        'birth',
+        'location',
+        'phone'
     ];
 
     /**
@@ -40,4 +47,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $attributes = [
+        'is_infected' => false,
+    ];
+
+    public function getFullName()
+    {
+        return implode(' ', [$this->name, $this->surname]);
+    }
+
+    public function scopeFilter(Builder $builder, QueryFilter $filters)
+    {
+        return $filters->apply($builder);
+    }
 }
