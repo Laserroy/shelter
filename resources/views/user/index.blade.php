@@ -45,7 +45,7 @@
             </div>
     </form>
     <br/>
-    <table class="table table-bordered">
+    <table class="table table-bordered text-center">
         <thead>
             <tr>
                 <th scope="col">Name</th>
@@ -63,9 +63,13 @@
                 <td>{{ $user->surname }}</td>
                 <td>{{ $user->location }}</td>
                 <td>{{ $user->last_login }}</td>
-                <td>{{ $user->is_infected ? 'infected' : 'healthy' }}</td>
                 <td>
                     @include('partials._infected-button-action', compact('user'))
+                </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        @include('partials._user-show-button', compact('user'))
+                    </div>
                 </td>
             </tr>
             @endforeach
